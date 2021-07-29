@@ -1,0 +1,52 @@
+<%= form_with(model: task) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+        <% task.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3">
+    <% form.label :name %>
+    <%= form.text_field :name, class:"form-control", placeholder:"Name" %>
+  </div>
+
+  <div class="field mb-3">
+    <% form.label :company_name %>
+    <%= form.text_field :company_name, class:"form-control", placeholder:"Company Name" %>
+  </div>
+
+  <div class="field mb-3">
+    <% form.label :url %>
+    <%= form.text_field :url, class:"form-control", placeholder:"URL" %>
+  </div>
+
+  <div class="field mb-3">
+    <% form.label :software %>
+    <%= form.text_field :software, class:"form-control", placeholder:"Software" %>
+  </div>
+
+  <div class="field mb-3">
+    <% form.label :deadline %>
+    <%= form.text_field :deadline, class:"form-control", placeholder:"Deadline" %>
+  </div>
+
+  <div class="field mb-3">
+    <% form.label :description %>
+    <%= form.text_field :description, class:"form-control", placeholder:"Description" %>
+  </div>
+
+  <div class="field mb-3">
+    <% form.label :description %>
+    <%= form.text_field :user_id, id: :task_user_id, class:"form-control", value:current_user.id, type: :hidden %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-success" %>
+  </div>
+<% end %>
